@@ -26,7 +26,7 @@ export class UsersController {
   }
 
   @Delete('/:id')
-  async deleteTaskById(@Param('id', ParseIntPipe) id: number): Promise<void> {
-    return this.userService.deleteTaskById(id);
+  async deleteUserById(@Param('id', ParseIntPipe) id: number): Promise<void> {
+    return this.userService.deleteUserById(id);
   }
 }
