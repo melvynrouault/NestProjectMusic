@@ -1,6 +1,5 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-
 @Entity()
 export class Song extends BaseEntity {
   @PrimaryGeneratedColumn()
