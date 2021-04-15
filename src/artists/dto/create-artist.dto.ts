@@ -1,5 +1,4 @@
-import { IsNotEmpty } from "class-validator";
-
+import { IsNotEmpty } from 'class-validator';
 
 export class CreateArtistDto {
   @IsNotEmpty()
@@ -7,5 +6,4 @@ export class CreateArtistDto {
 
   @IsNotEmpty()
   isBand: boolean;
-  
 }

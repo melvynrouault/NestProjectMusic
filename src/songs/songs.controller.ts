@@ -13,20 +13,20 @@ import { SongsService } from './songs.service';
 
 @Controller('song')
 export class SongsController {
-  constructor(private userService: SongsService) {}
+  constructor(private songService: SongsService) {}
 
   @Get('/:id')
-  async getTaskById(@Param('id', ParseIntPipe) id: number): Promise<Song> {
-    return this.userService.getSongById(id);
+  async getSongById(@Param('id', ParseIntPipe) id: number): Promise<Song> {
+    return this.songService.getSongById(id);
   }
 
   @Post('/createSong')
-  createTask(@Body() createSongDto: CreateSongDto) {
-    return this.userService.createSong(createSongDto);
+  createSong(@Body() createSongDto: CreateSongDto) {
+    return this.songService.createSong(createSongDto);
   }
 
   @Delete('/:id')
   async deleteSongById(@Param('id', ParseIntPipe) id: number): Promise<void> {
-    return this.userService.deleteSongById(id);
+    return this.songService.deleteSongById(id);
   }
 }
