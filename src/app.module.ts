@@ -1,15 +1,14 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
 import { UsersModule } from './users/users.module';
 import { AlbumsModule } from './albums/albums.module';
 import { ArtistsModule } from './artists/artists.module';
 import { SongsModule } from './songs/songs.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { typeormConfig } from './config/typeormconfig';
 
 @Module({
-  imports: [UserModule, UsersModule, AlbumsModule, ArtistsModule, SongsModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [ UsersModule, AlbumsModule, ArtistsModule, SongsModule,TypeOrmModule.forRoot(typeormConfig)],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

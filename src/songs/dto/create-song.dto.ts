@@ -6,6 +6,6 @@ export class CreateSongDto {
   title: string;
 
   @IsNotEmpty()
-  Duration: string;
+  duration: string;
   
 }
