@@ -1,5 +1,11 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
+import { Artist } from 'src/artists/artist.entity';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Album extends BaseEntity {
@@ -11,4 +17,6 @@ export class Album extends BaseEntity {
   year: number;
   @Column()
   cover: string;
+  @ManyToOne(() => Artist, (artist: Artist) => artist.albums)
+  public artist: Artist;
 }

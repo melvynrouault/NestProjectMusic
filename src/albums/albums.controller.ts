@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
 } from '@nestjs/common';
 import { Album } from './album.entity';
@@ -28,5 +29,13 @@ export class AlbumsController {
   @Delete('/:id')
   async deleteAlbumById(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.albumService.deleteAlbumById(id);
+  }
+
+  @Patch('/updateAlbum/:id')
+  updateOneTask(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() createAlbumDto: CreateAlbumDto,
+  ) {
+    return this.albumService.updateOneAlbum(id, createAlbumDto);
   }
 }

@@ -28,6 +28,22 @@ export class AlbumsService {
     return insert;
   }
 
+  async updateOneAlbum(id: number, createAlbumDto: CreateAlbumDto) {
+    const album = await this.getAlbumById(id);
+    console.log(album);
+    if (!album) {
+      throw new NotFoundException(`Album with ID ${id} not found`);
+    }
+    album.title = createAlbumDto.title;
+    album.year = createAlbumDto.year;
+    album.cover = createAlbumDto.cover;
+    album.artist = createAlbumDto.artist;
+
+    album.save();
+
+    return album;
+  }
+
   async deleteAlbumById(id: number): Promise<void> {
     const deleted = await this.albumRepository.delete(id);
     if (deleted.affected === 0) {

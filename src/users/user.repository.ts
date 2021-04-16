@@ -17,4 +17,14 @@ export class UserRepository extends Repository<User> {
     await user.save();
     return user;
   }
+
+  async signin(createUserDto: CreateUserDto): Promise<User> {
+    const { mail } = createUserDto;
+
+    const user = new User();
+    const userFound = this.find({ mail });
+    console.log(`user : ${JSON.stringify(user)}`);
+    console.log(`userfound : ${JSON.stringify(userFound)}`);
+    return user;
+  }
 }
