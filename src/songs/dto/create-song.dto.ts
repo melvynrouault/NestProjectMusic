@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { IsNotEmpty } from "class-validator";
+import { Album } from "src/albums/album.entity";
 
 
 export class CreateSongDto {
@@ -8,5 +9,7 @@ export class CreateSongDto {
 
   @IsNotEmpty()
   duration: string;
+
+  album: Album;
   
 }
