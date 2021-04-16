@@ -1,4 +1,12 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Album } from 'src/albums/album.entity';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class User extends BaseEntity {
@@ -8,4 +16,7 @@ export class User extends BaseEntity {
   mail: string;
   @Column()
   password: string;
+  @ManyToMany(() => Album)
+  @JoinTable()
+  public albums: Album[];
 }

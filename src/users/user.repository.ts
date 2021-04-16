@@ -8,11 +8,12 @@ const salt = 10;
 @EntityRepository(User)
 export class UserRepository extends Repository<User> {
   async createUser(createUserDto: CreateUserDto): Promise<User> {
-    const { mail, password } = createUserDto;
+    const { mail, password, albums } = createUserDto;
 
     const user = new User();
     user.mail = mail;
     user.password = await bcrypt.hash(password, salt);
+    user.albums = albums;
 
     await user.save();
     return user;
