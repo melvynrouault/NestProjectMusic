@@ -11,6 +11,13 @@ export class AlbumsService {
     private albumRepository: AlbumRepository,
   ) {}
 
+  async getAllAlbums(): Promise<Album[]> {
+    const found: Album[] = await this.albumRepository.find();
+    if (!found) {
+      throw new NotFoundException(`Albums not found`);
+    }
+    return found;
+  }
   async getAlbumById(id: number): Promise<Album> {
     const found = await this.albumRepository.findOne(id);
     if (!found) {

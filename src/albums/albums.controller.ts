@@ -16,6 +16,11 @@ import { CreateAlbumDto } from './dto/create-album.dto';
 export class AlbumsController {
   constructor(private albumService: AlbumsService) {}
 
+  @Get('/all')
+  async getAllAlbums(): Promise<Album[]> {
+    return this.albumService.getAllAlbums();
+  }
+
   @Get('/:id')
   async getAlbumById(@Param('id', ParseIntPipe) id: number): Promise<Album> {
     return this.albumService.getAlbumById(id);

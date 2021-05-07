@@ -15,6 +15,11 @@ import { CreateArtistDto } from './dto/create-artist.dto';
 export class ArtistsController {
   constructor(private artistService: ArtistsService) {}
 
+  @Get('/all')
+  async getAllAlbums(): Promise<Artist[]> {
+    return this.artistService.getAllArtists();
+  }
+
   @Get('/:id')
   async getArtistById(@Param('id', ParseIntPipe) id: number): Promise<Artist> {
     return this.artistService.getArtistById(id);

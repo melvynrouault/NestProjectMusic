@@ -11,6 +11,14 @@ export class ArtistsService {
     private artistRepository: ArtistRepository,
   ) {}
 
+  async getAllArtists(): Promise<Artist[]> {
+    const found: Artist[] = await this.artistRepository.find();
+    if (!found) {
+      throw new NotFoundException(`Artists not found`);
+    }
+    return found;
+  }
+
   async getArtistById(id: number): Promise<Artist> {
     const found = await this.artistRepository.findOne(id);
     if (!found) {
