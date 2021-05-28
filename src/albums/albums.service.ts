@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Artist } from 'src/artists/artist.entity';
 import { Album } from './album.entity';
 import { AlbumRepository } from './album.repository';
 import { CreateAlbumDto } from './dto/create-album.dto';
@@ -19,7 +20,7 @@ export class AlbumsService {
     return found;
   }
   async getAlbumById(id: number): Promise<Album> {
-    const found = await this.albumRepository.findOne(id);
+    const found = await this.albumRepository.findOne(id, {relations:['artist']});
     if (!found) {
       throw new NotFoundException(`Album with ID ${id} not found`);
     }
