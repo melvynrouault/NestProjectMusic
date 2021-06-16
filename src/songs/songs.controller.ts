@@ -15,6 +15,10 @@ import { SongsService } from './songs.service';
 export class SongsController {
   constructor(private songService: SongsService) {}
 
+  @Get('/all')
+  async getAllSongs(): Promise<Song[]> {
+    return this.songService.getAllSongs();
+  }
   @Get('/:id')
   async getSongById(@Param('id', ParseIntPipe) id: number): Promise<Song> {
     return this.songService.getSongById(id);

@@ -11,6 +11,13 @@ export class SongsService {
     private songRepository: SongRepository,
   ) {}
 
+  async getAllSongs(): Promise<Song[]> {
+    const found: Song[] = await this.songRepository.find();
+    if (!found) {
+      throw new NotFoundException(`Songs not found`);
+    }
+    return found;
+  }
   async getSongById(id: number): Promise<Song> {
     const found = await this.songRepository.findOne(id);
     if (!found) {
